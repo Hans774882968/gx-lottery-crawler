@@ -42,9 +42,11 @@ def get_articles_from_html(html_txt: str) -> List[Article]:
 
 def fetch_data_from_website():
     all_articles: List[Article] = []
-    for i in range(1, 11):
+    for i in range(1, 21):
         if i > 1:
-            time.sleep(random.uniform(0.5, 1))
+            rest_time = random.uniform(0.5, 1)
+            print('Have a rest for %.2fs' % (rest_time))
+            time.sleep(rest_time)
         url = f'http://www.lottery.gx.cn/sylm_171188/jdzx/index_{i}.html'
         response = requests.get(url, headers=headers, proxies=proxies)
         print('dbg', i, response.text[:50])
